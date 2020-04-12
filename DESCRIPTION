@@ -7,6 +7,21 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com")
 Description: What the package does (one paragraph).
-License: What license it uses
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    DT,
+    spelling
+Language: en-US
+Imports: 
+    dplyr,
+    ggplot2,
+    lubridate,
+    magrittr,
+    purrr,
+    readr,
+    stringr,
+    tibble,
+    tidyr
+RoxygenNote: 7.0.2

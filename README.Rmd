@@ -1,0 +1,117 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  message = F,
+  warning = F
+)
+library(magrittr)
+```
+
+# ZoomReports
+
+The goal of ZoomReports is to ...
+
+## Installation
+
+``` r
+install.packages("ZoomReports")
+```
+
+## Example
+
+First, let's load the package.
+
+```{r}
+library(ZoomReports)
+```
+
+We provide an example of a typical **attendee report** provided after a Zoom Webinar. 
+
+```{r example}
+attend <- system.file("extdata",
+                      "Anonymized_Zoom_Attendee_Report.csv",
+                      package = "ZoomReports" )
+```
+
+```{r, echo = F}
+attend %>%
+  readLines() %>%
+  head(10)
+```
+
+This single file contains 5 seperate CSV datasets: **Attendee Report**, **Host Details**, **Panelist Details**, **Attendee Details**, and **Other Details**. We are only interested in the data contained in **Attendee Details**.
+
+```{r}
+attendees <- getAttendees(attend)
+```
+
+```{r, echo=F}
+attendees %>%
+  head(3) %>%
+  knitr::kable()
+```
+
+We can use this data to examine the country of our attendees.
+
+```{r}
+countries <- getCountryInfo(attendees)
+```
+
+```{r, echo = F}
+countries %>%
+  dplyr::arrange(desc(Attendees)) %>%
+  head() %>%
+  knitr::kable()
+```
+
+Now let's look at the amount of attendees that joined or left the webinar over either 1 minute intervals or 10 minute intervals.
+
+```{r}
+start_time <- "2020-03-28 08:00"
+end_time <- "2020-03-28 18:00"
+
+intervals_01 <- createIntervals(start_time, end_time, 1)
+intervals_10 <- createIntervals(start_time, end_time, 10)
+```
+
+The out put of create intervals is simply a vector of time intervals. 
+
+```{r echo = F}
+head(intervals_10, 7)
+```
+
+We can use this to bin the number of attendees that either join or leave during that interval.
+
+```{r}
+timeData_01 <- getTimeData(intervals_01, attendees)
+timeData_10 <- getTimeData(intervals_10, attendees)
+```
+
+```{r, echo = F}
+timeData_10 %>%
+  head() %>%
+  knitr::kable()
+```
+
+With this time data we an now create visualizations to see the flow of people throughout the webinar.
+
+```{r}
+showAttendeeMovement(timeData_01, 'cumulative')
+```
+
+```{r}
+showAttendeeMovement(timeData_10, 'discrete')
+```
+
+```{r}
+
+showAttendeeMovement(timeData_10, 'breakdown')
+```
