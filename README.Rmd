@@ -25,6 +25,10 @@ The goal of ZoomReports is to gain more insight from the reports we get after a 
 devtools::install_github('beemyfriend/ZoomReports')
 ```
 
+## Where to get the Zoom Attendee Report
+
+If you hosted a webinar, then you can get the associated reports by logging into [zoom.us](https://zoom.us) and then going to [zoom.us/account/report/webinar](https://zoom.us/account/report/webinar)
+
 ## Example
 
 First, let's load the package.
@@ -82,7 +86,7 @@ intervals_01 <- createIntervals(start_time, end_time, 1)
 intervals_10 <- createIntervals(start_time, end_time, 10)
 ```
 
-The out put of create intervals is simply a vector of time intervals. 
+The output of `createIntervals` is simply a vector of time intervals. 
 
 ```{r echo = F}
 head(intervals_10, 7)

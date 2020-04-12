@@ -12,6 +12,11 @@ Installation
 devtools::install_github('beemyfriend/ZoomReports')
 ```
 
+Where to get the Zoom Attendee Report
+-------------------------------------
+
+If you hosted a webinar, then you can get the associated reports by logging into [zoom.us](https://zoom.us) and then going to [zoom.us/account/report/webinar](https://zoom.us/account/report/webinar)
+
 Example
 -------
 
@@ -77,7 +82,7 @@ intervals_01 <- createIntervals(start_time, end_time, 1)
 intervals_10 <- createIntervals(start_time, end_time, 10)
 ```
 
-The out put of create intervals is simply a vector of time intervals.
+The output of `createIntervals` is simply a vector of time intervals.
 
     #> [1] 2020-03-28 08:00:00 UTC--2020-03-28 08:10:00 UTC
     #> [2] 2020-03-28 08:10:00 UTC--2020-03-28 08:20:00 UTC
