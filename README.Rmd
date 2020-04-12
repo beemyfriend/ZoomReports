@@ -22,7 +22,7 @@ The goal of ZoomReports is to gain more insight from the reports we get after a 
 ## Installation
 
 ``` r
-devtools::install_github('beemyfriend/RPSimulator')
+devtools::install_github('beemyfriend/ZoomReports')
 ```
 
 ## Example

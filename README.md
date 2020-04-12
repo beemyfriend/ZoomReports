@@ -9,7 +9,7 @@ Installation
 ------------
 
 ``` r
-devtools::install_github('beemyfriend/RPSimulator')
+devtools::install_github('beemyfriend/ZoomReports')
 ```
 
 Example
